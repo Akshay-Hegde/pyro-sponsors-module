@@ -43,7 +43,6 @@ class Module_Sponsors extends Module {
 	public function install()
 	{
 		$this->dbforge->drop_table('sponsors');
-		//$this->db->delete('settings', array('module' => 'sponsors'));
 
 		$this->load->library('files/files');
 		Files::create_folder(0, 'sponsors');
@@ -62,7 +61,7 @@ class Module_Sponsors extends Module {
 			'featured' => array(
 				'type' => 'TINYINT',
 				'constraint' => '1',
-				'default' => 0
+				'default' => 0,
 				),
 			'title' => array(
 				'type' => 'VARCHAR',
@@ -80,25 +79,10 @@ class Module_Sponsors extends Module {
 
 			);
 
-		// $sponsors_setting = array(
-		// 	'slug' => 'sponsors_setting',
-		// 	'category' => 'Sponsors Category',
-		// 	'title' => 'Sponsors Setting',
-		// 	'description' => 'A Yes or No option for the Sponsors module',
-		// 	'`default`' => '1',
-		// 	'`value`' => '1',
-		// 	'type' => 'select',
-		// 	'`options`' => '1=Yes|0=No',
-		// 	'is_required' => 1,
-		// 	'is_gui' => 1,
-		// 	'module' => 'sponsors'
-		// 	);
-
 		$this->dbforge->add_field($sponsors);
 		$this->dbforge->add_key('id', TRUE);
 
 		if($this->dbforge->create_table('sponsors') AND
-		   //$this->db->insert('settings', $sponsors_setting) AND
 			is_dir($this->upload_path.'sponsors') OR @mkdir($this->upload_path.'sponsors',0777,TRUE))
 		{
 			return TRUE;
@@ -112,7 +96,6 @@ class Module_Sponsors extends Module {
 		$folder = $this->file_folders_m->get_by('name', 'sponsors');
 		Files::delete_folder($folder->id);
 		$this->dbforge->drop_table('sponsors');
-		//$this->db->delete('settings', array('module' => 'sponsors'));
 		{
 			return TRUE;
 		}
