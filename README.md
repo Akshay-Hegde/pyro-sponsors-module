@@ -25,9 +25,18 @@ Editing an item that cannot be feature, since the limit is reached:
 
 ### Features
 
-* List spornsors with sort ordering
+* List sponsors with sort ordering
 * Feature sponsors with limit
 * Simple image dropdown for selecting photos
+
+#### Fields
+
+* id
+* title
+* link
+* image
+
+You could use this module for listing other things, but I find that when listing out sponsors, this info is pretty standard.
 
 #### Changing The Feature Limit
 
