@@ -2,9 +2,9 @@
 /**
  * sponsors Events Class
  *
- * @author      WARPAINT Media
- * @website     http://warpaintmedia.ca/
- * @package     PyroCMS
+ * @author      James Doyle
+ * @website     http://ohdoylerules.com/
+ * @package     WARPAINT Media
  * @subpackage  Sponsors
  * @copyright   MIT
  */
@@ -21,7 +21,7 @@ class Events_sponsors {
 
 		//register a second event that can be called any time.
 		// To execute the "run" method below you would use: Events::trigger('sponsors_event');
-		// in any php file within PyroCMS, even another module.
+		// in any php file within WARPAINT Media, even another module.
 		Events::register('sponsors_event', array($this, 'run'));
     }
 

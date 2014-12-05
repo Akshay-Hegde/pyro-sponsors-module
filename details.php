@@ -2,9 +2,9 @@
 /**
  * Create and manage the sponsors section.
  *
- * @author 		WARPAINT Media
- * @website		http://warpaintmedia.ca/
- * @package 	PyroCMS
+ * @author 		James Doyle
+ * @website		http://ohdoylerules.com/
+ * @package 	WARPAINT Media
  * @subpackage 	Sponsors
  * @copyright 	MIT
  */
