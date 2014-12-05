@@ -23,9 +23,6 @@ class Admin extends Admin_Controller
 		$this->load->library('form_validation');
 		$this->lang->load('sponsors');
 
-		// $this->load->library('files/files');
-		// $this->load->model('files/file_folders_m');
-
 		// Set the validation rules
 		$this->item_validation_rules = array(
 			array(
@@ -71,8 +68,6 @@ class Admin extends Admin_Controller
 	public function create()
 	{
 		$sponsors = new StdClass();
-		// $folder = $this->file_folders_m->get_by('name', 'sponsors');
-		// $this->data->files = Files::folder_contents($folder->id);
 		// Set the validation rules from the array above
 		$this->form_validation->set_rules($this->item_validation_rules);
 
@@ -99,7 +94,7 @@ class Admin extends Admin_Controller
 			$sponsors->data->{$rule['field']} = $this->input->post($rule['field']);
 		}
 		$this->_form_data();
-		// Build the view using sample/views/admin/form.php
+		// Build the view using sponsors/views/admin/form.php
 		$this->template->title($this->module_details['name'], lang('sponsors.new_item'))
 		->build('admin/form', $sponsors->data);
 	}
@@ -107,10 +102,6 @@ class Admin extends Admin_Controller
 	public function edit($id = 0)
 	{
 		$this->data = $this->sponsors_m->get($id);
-
-		// $this->load->model('files/file_folders_m');
-		// $folder = $this->file_folders_m->get_by('name', 'sponsors');
-		// $this->data->files = Files::folder_contents($folder->id);
 
 		// Set the validation rules from the array above
 		$this->form_validation->set_rules($this->item_validation_rules);
@@ -136,16 +127,16 @@ class Admin extends Admin_Controller
 				redirect('admin/sponsors/create');
 			}
 		}
-		// starting point for file uploads
-		// $this->data->fileinput = json_decode($this->data->fileinput);
+
 		$this->_form_data();
-		// Build the view using sample/views/admin/form.php
+		// Build the view using sponsors/views/admin/form.php
 		$this->template->title($this->module_details['name'], lang('sponsors.edit'))
 		->build('admin/form', $this->data);
 	}
 
 	public function _form_data()
 	{
+		// grab all the images in the sponsors folder and list them
 		$this->load->model('files/file_folders_m');
 		$this->load->library('files/files');
 		$folder = $this->file_folders_m->get_by('name', 'sponsors');
