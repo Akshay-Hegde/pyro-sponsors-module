@@ -28,6 +28,7 @@ Editing an item that cannot be feature, since the limit is reached:
 * List sponsors with sort ordering
 * Feature sponsors with limit
 * Simple image dropdown for selecting photos
+* Cache (default `theme_m/sponsors-cache`, changed in the plugin)
 
 #### Fields
 
