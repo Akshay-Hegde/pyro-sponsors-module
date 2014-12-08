@@ -27,17 +27,23 @@ class Plugin_sponsors extends Plugin
 	 */
 	public function items()
 	{
-		$this->load->model('sponsors/sponsors_m');
-		$results = $this->sponsors_m->order_by('order')->get_all();
-		$real_results = array();
-		foreach ($results as $item) {
-			if ($item->featured) {
-				$real_results['featured'][] = $item;
-			} else {
-				$real_results['sponsors'][] = $item;
+		if (!$sponsors = $this->pyrocache->get('theme_m/sponsors-cache'))
+		{
+			$this->load->model('sponsors/sponsors_m');
+			$query = $this->sponsors_m->order_by('order')->get_all();
+			$real_results = array();
+			foreach ($query as $item) {
+				if ($item->featured) {
+					$real_results['featured'][] = $item;
+				} else {
+					$real_results['sponsors'][] = $item;
+				}
 			}
+			$sponsors = array($real_results);
+			// 2 hour cache
+			$this->pyrocache->write($sponsors, 'theme_m/sponsors-cache', 7200);
 		}
-		return array($real_results);
+		return $sponsors;
 	}
 }
 
