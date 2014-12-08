@@ -10,7 +10,7 @@
  */
 class Module_Sponsors extends Module {
 
-	public $version = '1.0';
+	public $version = '1.1';
 
 	public function info()
 	{
